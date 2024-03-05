@@ -123,7 +123,7 @@ module Ferrum
     def start
       Ferrum.started
       @process = Process.start(@options)
-      @client = Client.new(self, @process.ws_url)
+      @client = Client.new(self, @process.ws_url + "/?stealth=1&--disable-web-security=true&--ignore-certificate-errors=true&--ignore-certificate-errors-spki-list=true")
       @contexts = Contexts.new(self)
     end
   end
